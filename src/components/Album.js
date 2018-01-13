@@ -50,11 +50,19 @@ class Album extends Component {
      this.play(newSong);
   }
 
+  handleNextClick() {
+    const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+    const newIndex = Math.min(this.state.album.songs.length-1, currentIndex + 1);
+    const newSong = this.state.album.songs[newIndex];
+    this.setSong(newSong);
+    this.play(newSong);
+ }
+
   render() {
     return (
       <section className="album">
       <section id="album-info">
-         <img id="album-cover-art" src={this.state.album.albumCover} />
+         <img id="album-cover-art" src={this.state.album.albumCover} alt="album cover"/>
         <div className="album-details">
           <h1 id="album-title">{this.state.album.title}</h1>
           <h2 className="artist">{this.state.album.artist}</h2>
@@ -72,9 +80,9 @@ class Album extends Component {
            <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
               <td className="song-actions">
               <button>
-                 <span class="song-number" key={index + 1}/>
-                 <span class="ion-play"/>
-                 <span class="ion-pause"/>
+                 <span className="song-number" key={index + 1}/>
+                 <span className="ion-play"/>
+                 <span className="ion-pause"/>
               </button>
               </td>
               <td className="song-title">{song.title}</td>
@@ -88,6 +96,8 @@ class Album extends Component {
             currentSong={this.state.currentSong}
             handleSongClick={() => this.handleSongClick(this.state.currentSong)}
             handlePrevClick={() => this.handlePrevClick()}
+            handleNextClick={() => this.handleNextClick()}
+
         />
       </section>
     );
