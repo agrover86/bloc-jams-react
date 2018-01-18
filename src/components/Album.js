@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
-
+import '../style/Album.css';
 
 class Album extends Component {
   constructor(props) {
@@ -68,10 +68,10 @@ class Album extends Component {
    handleSongClick(song) {
     const isSameSong = this.state.currentSong === song;
     if (this.state.isPlaying && isSameSong) {
-      this.pause();
+      this.pause(song);
     } else {
       if (!isSameSong) { this.setSong(song); }
-      this.play();
+      this.play(song);
     }
    }
    handlePrevClick() {
@@ -104,10 +104,11 @@ class Album extends Component {
     return (
       <section className="album">
       <section id="album-info">
+
+         <h1 id="album-title">{this.state.album.artist} - {this.state.album.title}  </h1>
          <img id="album-cover-art" src={this.state.album.albumCover} alt="album cover"/>
         <div className="album-details">
-          <h1 id="album-title">{this.state.album.title}</h1>
-          <h2 className="artist">{this.state.album.artist}</h2>
+
           <div id="release-info">{this.state.album.releaseInfo}</div>
         </div>
       </section>
@@ -120,15 +121,17 @@ class Album extends Component {
        <tbody>
          { this.state.album.songs.map( (song, index) =>
            <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
+           <div className={ this.state.currentSong.title === song.title & this.state.isPlaying ? 'playing' :
+           this.state.currentSong.title === song.title & !this.state.isPlaying ?'paused':'not-playing'}>
               <td className="song-actions">
               <button>
-                 <span className="song-number" key={index + 1}/>
-                 <span className="ion-play"/>
-                 <span className="ion-pause"/>
+                <span className="song-number">{index + 1}</span>
+                <span className={ this.state.currentSong.title === song.title & this.state.isPlaying ? 'ion-pause' : 'ion-play'}></span>
               </button>
               </td>
               <td className="song-title">{song.title}</td>
-              <td className="song-duration">{song.duration}</td>
+              <td className="song-duration">{this.formatTime(Number(song.duration))}</td>
+              </div>
             </tr>
           )}
        </tbody>
@@ -145,6 +148,7 @@ class Album extends Component {
             handleVolumeChange={(e) => this.handleVolumeChange(e)}
 
         />
+
       </section>
     );
   }

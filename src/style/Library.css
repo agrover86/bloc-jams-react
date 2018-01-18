@@ -1,0 +1,28 @@
+.album-link{
+  display: inline-block;
+  text-decoration: none;
+  width: 350px;
+  margin: 2rem;
+}
+
+
+.album-cover-art {
+  float: right;
+  position: relative;
+  width: 150px;
+  max-width: 33%;
+}
+
+
+.album-desc{
+  text-align: left;
+  font-weight: 100;
+  font-size: 1.4rem;
+  width: 150px;
+  opacity: 0.9;
+  color:white;
+}
+
+.songCount{
+  font-size: 1.0rem;
+}
