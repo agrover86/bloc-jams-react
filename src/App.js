@@ -25,10 +25,6 @@ class App extends Component {
 <<<<<<< HEAD
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300"/>
           <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
-=======
-          <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300"/>
-          <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
->>>>>>> checkpoint-67-styling
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css"/>
         </main>
       </div>
