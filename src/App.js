@@ -11,15 +11,20 @@ class App extends Component {
       <div className="App">
         <header>
         <nav>
-           <Link to='/'>Landing</Link>
-           <Link to='/library'>Library</Link>
+             <img src="assets/images/bloc_jams_logo.png" alt="bloc jams logo"/>
+             <div className='page-nav' >
+               <Link className='page-link' to='/'>Landing |</Link>
+               <Link className='page-link' to='/library'> Library </Link>
+             </div>
         </nav>
-          <h1>Bloc Jams</h1>
         </header>
         <main>
           <Route exact path="/" component={Landing} />
           <Route path="/library" component={Library} />
           <Route path="/album/:slug" component={Album} />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300"/>
+          <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css"/>
         </main>
       </div>
     );
